@@ -10,9 +10,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://你的ip:3306/blog?serverTimezone=Asia/Shanghai&allowMultiQueries=true
-    username: MYSQL用户名
-    password: MYSQL密码
+    url: jdbc:mysql://112.74.127.195:3306/blog?serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: '!wcxfds2'
     hikari:
       minimum-idle: 5
       # 空闲连接存活最大时间，默认600000（10分钟）
@@ -28,17 +28,18 @@ spring:
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+
   # redis配置
   redis:
-    host: 你的ip
+    host: 112.74.127.195
     port: 6379
-    password: Redis密码
+    password: '!wcxfds2'
   # mq配置
   rabbitmq:
-    host: 你的ip
+    host: 112.74.127.195
     port: 5672
-    username: rabbitmq用户名
-    password: rabbitmq密码
+    username: guest
+    password: guest
     listener:
       simple:
         retry:
@@ -48,12 +49,12 @@ spring:
   # es配置 若搜索模式为mysql可删除
   elasticsearch:
     rest:
-      uris: 你的IP:9200
+      uris: 112.74.127.195:9200
   # 邮箱配置
   mail:
     host: smtp.qq.com
-    username: 邮箱用户名
-    password: 邮箱授权码
+    username: 1123442688@qq.com
+    password: geyzqzonrzvkbadd
     default-encoding: UTF-8
     port: 587
     properties:
@@ -67,6 +68,9 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size:  100MB
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
 
 # 配置MybatisPlus
 mybatis-plus:
@@ -77,23 +81,23 @@ mybatis-plus:
 
 # 搜索模式 可选 elasticsearch或mysql
 search:
-  mode: mysql
+  mode: elasticsearch
 
 
 # 上传模式 可选 oss或local  （http://和最后的/一定不能去！！！）
 upload:
-  mode: local
+  mode: oss
   local:
     # nginx映射本地文件路径，无域名则为 ip:83
     url: http://你的文件上传子域名/
     # 本地文件存储路径
     path: /usr/local/upload/
   oss:
-    url: http://Bucket域名/
-    endpoint: OSS配置endpoint
-    accessKeyId: OSS配置accessKeyId
-    accessKeySecret: OSS配置accessKeySecret
-    bucketName: OSS配置bucketName
+    url: http://blog-md-pic.oss-cn-hangzhou.aliyuncs.com/
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    accessKeyId: LTAI4G3fb4HYx85mYBADWZtN
+    accessKeySecret: NTheM4cedPegrNuOOXdKoK6KBbP14H
+    bucketName: blog-md-pic
   cos:
     url: http://Bucket域名/
     secretId: cos的secretId
